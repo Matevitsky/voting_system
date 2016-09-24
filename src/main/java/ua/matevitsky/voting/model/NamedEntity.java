@@ -3,6 +3,8 @@ package ua.matevitsky.voting.model;
 /**
  * Created by Sergey on 20.09.16.
  */
+
+
 public class NamedEntity extends BaseEntity{
 
     private String name;
