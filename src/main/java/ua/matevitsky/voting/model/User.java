@@ -1,30 +1,29 @@
 package ua.matevitsky.voting.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Sergey on 20.09.16.
  */
 @Entity
-public class User {
+@Table(name = "users")
+public class User extends NamedEntity{
 
-    @Id
-    @GeneratedValue
-    private long id;
+    protected User(Integer id,String name) {
+        super(id, name);
+    }
 
-    private String name;
+    public User() {
+        super();
+    }
 
-
-
-    public long getId() {
+    /*public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
+    }*/
 
     public String getName() {
         return name;

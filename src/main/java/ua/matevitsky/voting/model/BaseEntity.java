@@ -1,20 +1,32 @@
 package ua.matevitsky.voting.model;
 
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.springframework.hateoas.Identifiable;
+
+import javax.persistence.*;
 
 /**
  * Created by Sergey on 20.09.16.
  */
 
+@MappedSuperclass
+public class BaseEntity extends AbstractPersistable<Integer> implements Identifiable<Integer> {
 
-public class BaseEntity  {
 
-    @Id
-    private Integer id;
 
-    protected BaseEntity(Integer id) {
-        this.id = id;
+    public BaseEntity() {
+
     }
 
+    protected BaseEntity(Integer id) {
+        setId(id);
+    }
+
+
+    @JsonIgnore
+    public boolean isNew() {
+        return super.isNew();
+    }
 
 }
