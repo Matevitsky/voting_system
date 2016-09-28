@@ -1,5 +1,7 @@
 package ua.matevitsky.voting.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
@@ -10,7 +12,9 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class NamedEntity extends BaseEntity{
 
+
     @Column(name = "name")
+    @NotEmpty
     protected String name;
 
 
@@ -22,7 +26,6 @@ public class NamedEntity extends BaseEntity{
     }
 
     public NamedEntity() {
-super();
     }
 
     public String getName() {

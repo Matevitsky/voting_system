@@ -11,6 +11,7 @@ import javax.persistence.*;
  */
 
 @MappedSuperclass
+@Access(AccessType.FIELD)
 public class BaseEntity extends AbstractPersistable<Integer> implements Identifiable<Integer> {
 
 

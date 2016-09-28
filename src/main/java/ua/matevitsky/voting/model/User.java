@@ -7,23 +7,15 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "users")
-public class User extends NamedEntity{
+public class User extends NamedEntity {
 
     protected User(Integer id,String name) {
         super(id, name);
     }
 
     public User() {
-        super();
-    }
 
-    /*public long getId() {
-        return id;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }*/
 
     public String getName() {
         return name;
