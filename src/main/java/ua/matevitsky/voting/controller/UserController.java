@@ -5,8 +5,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import ua.matevitsky.voting.model.Restaurant;
 import ua.matevitsky.voting.model.User;
+import ua.matevitsky.voting.repository.RestaurantRepository;
 import ua.matevitsky.voting.repository.UserRepository;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class UserController {
 
     private UserRepository userRepository;
 
-
+    private RestaurantRepository restaurantRepository;
 
     @Autowired
     public UserController(UserRepository userRepository) {
@@ -53,7 +54,8 @@ public class UserController {
 
     }
 
-    public void addRestaurant(@Param("restaurantName") String name){
-
+    public void addRestaurant(@Param("restaurantName") String name) {
+        Restaurant restaurant = new Restaurant((name));
+        restaurantRepository.save()
     }
 }
