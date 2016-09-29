@@ -5,7 +5,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ua.matevitsky.voting.model.Restaurant;
 import ua.matevitsky.voting.model.User;
 import ua.matevitsky.voting.repository.RestaurantRepository;
 import ua.matevitsky.voting.repository.UserRepository;
@@ -55,7 +54,7 @@ public class UserController {
     }
 
     public void addRestaurant(@Param("restaurantName") String name) {
-        Restaurant restaurant = new Restaurant((name));
-        restaurantRepository.save()
+      //  Restaurant restaurant = new Restaurant((name));
+        //restaurantRepository.save()
     }
 }
