@@ -20,6 +20,8 @@ public class UserController {
 
     private UserRepository userRepository;
 
+
+
     @Autowired
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -48,6 +50,10 @@ public class UserController {
     @RequestMapping(method = RequestMethod.PUT, params = "id")
     public void removeUser(@Param("id") Integer id) {
         userRepository.delete(id);
+
+    }
+
+    public void addRestaurant(@Param("restaurantName") String name){
 
     }
 }

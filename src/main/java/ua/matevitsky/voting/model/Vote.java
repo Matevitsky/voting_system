@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "votes", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "vote_date"}, name = "unique_vote")})
-public class Vote extends BaseEntity {
+public class Vote extends BaseEntity implements Serializable{
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
@@ -24,7 +24,7 @@ public class Vote extends BaseEntity {
     private Menu menu;
 
     @NotNull
-    @Column(name = "vote_date", nullable = false)
+    @Column(name = "vote_date", nullable = false,columnDefinition = "Date")
      private LocalDate date;
 
     public Vote(User user, Menu menu, LocalDate date) {

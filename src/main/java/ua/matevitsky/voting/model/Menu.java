@@ -1,8 +1,6 @@
 package ua.matevitsky.voting.model;
 
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -22,7 +20,6 @@ public class Menu extends BaseEntity {
 
     @NotNull
     @Column(name = "menu_date", nullable = false)
-    @DateTimeFormat
     private LocalDate date;
 
     public Menu(Integer id, Restaurant restaurant,LocalDate  date) {
