@@ -23,6 +23,4 @@ public interface RestaurantRepository extends JpaRepository <Restaurant,Integer>
     public Restaurant findById(@Param("id") Integer id) ;
 
 
-    @Override
-    void delete(Integer id);
 }

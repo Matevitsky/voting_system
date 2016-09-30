@@ -2,6 +2,7 @@ package ua.matevitsky.voting.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import ua.matevitsky.voting.model.Menu;
 import ua.matevitsky.voting.model.Vote;
 
 /**
@@ -10,6 +11,6 @@ import ua.matevitsky.voting.model.Vote;
 
 
 @Repository
-public interface VoteRepository extends JpaRepository<Vote,Integer> {
+public interface VoteRepository extends JpaRepository<Vote,Menu> {
 
 }

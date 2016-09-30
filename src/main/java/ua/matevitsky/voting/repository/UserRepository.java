@@ -21,10 +21,8 @@ public interface UserRepository extends JpaRepository<User,Integer>{
     @Transactional(readOnly = true)
     @Query("SELECT u FROM User u WHERE u.id=:id")
     @RequestMapping(method = RequestMethod.GET)
-    public User findById(@Param("id") Integer id) ;
+     User findById(@Param("id") Integer id) ;
 
 
-    @Override
-    void delete( Integer id);
 
 }

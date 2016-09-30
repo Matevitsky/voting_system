@@ -2,7 +2,6 @@ package ua.matevitsky.voting.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -11,7 +10,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "votes", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "vote_date"}, name = "unique_vote")})
-public class Vote extends BaseEntity implements Serializable{
+public class Vote extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
