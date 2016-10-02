@@ -34,14 +34,17 @@ public class UserService {
 
 
 
-    public void addNewUser(String name) {
+    public void addNewUser(String name,String email,String password,Boolean enabled) {
         User user = new User();
         user.setName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setEnabled(enabled);
         userRepository.save(user);
     }
 
     public User findById(Integer id) {
-        return userRepository.findById(id);
+        return userRepository.getOne(id);
     }
 
     public void removeUser(Integer id) {

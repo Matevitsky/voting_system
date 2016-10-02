@@ -3,7 +3,7 @@ package ua.matevitsky.voting.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.matevitsky.voting.model.Vote;
-import ua.matevitsky.voting.repository.MenuRepository;
+import ua.matevitsky.voting.repository.RestaurantRepository;
 import ua.matevitsky.voting.repository.UserRepository;
 import ua.matevitsky.voting.repository.VoteRepository;
 
@@ -22,12 +22,12 @@ public class VoteService {
     private UserRepository userRepository;
 
     @Autowired
-    private MenuRepository menuRepository;
+    private RestaurantRepository restaurantRepository;
 
-    public void addVote(Integer userId, Integer menuId) {
+    public void addVote(Integer userId, Integer restaurantId) {
         Vote vote = new Vote();
-        vote.setMenu(menuRepository.findOne(menuId));
-        vote.setUser(userRepository.findById(userId));
+        vote.setRestaurant(restaurantRepository.findById(restaurantId));
+        vote.setUser(userRepository.findOne(userId));
         vote.setDate(LocalDate.now());
         voteRepository.save(vote);
     }

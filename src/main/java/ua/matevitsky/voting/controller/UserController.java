@@ -9,6 +9,7 @@ import ua.matevitsky.voting.model.Lunch;
 import ua.matevitsky.voting.model.Restaurant;
 import ua.matevitsky.voting.model.User;
 import ua.matevitsky.voting.service.UserService;
+import ua.matevitsky.voting.service.VoteService;
 
 import java.util.List;
 
@@ -16,60 +17,71 @@ import java.util.List;
  * Created by Sergey on 23.09.16.
  */
 
-@RestController(value = "/")
+@RestController(value = "/api")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @Autowired
+    private VoteService voteService;
+
+
+    @RequestMapping(value = "api/users", method = RequestMethod.GET)
     public List<User> findAllUsers() {
         return userService.findAllUsers();
     }
 
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public void addNewWebUser(@Param("name") String name) {
-        userService.addNewUser(name);
+    @RequestMapping(value = "api/users", method = RequestMethod.POST)
+    public void addNewWebUser(@Param("name") String name, @Param("email") String email,
+                              @Param("password") String password,@Param("enabled") Boolean enabled) {
+        userService.addNewUser(name,email,password,enabled);
     }
 
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET, params = "name")
+    @RequestMapping(value = "api/users", method = RequestMethod.GET, params = "id")
     public User findById(@Param("id") Integer id) {
         return userService.findById(id);
     }
 
 
-    @RequestMapping(value = "/users", method = RequestMethod.PUT, params = "id")
+    @RequestMapping(value = "api/users", method = RequestMethod.PUT, params = "id")
     public void removeUser(@Param("id") Integer id) {
         userService.removeUser(id);
 
     }
 
-    @RequestMapping(value = "/restaurant", params = "name", method = RequestMethod.POST)
+    @RequestMapping(value = "api/users/restaurant", params = "name", method = RequestMethod.POST)
     public void addRestaurant(@Param("restaurantName") String name) {
         userService.addRestaurant(name);
     }
 
-    @RequestMapping(value = "/restaurant", params = "restaurantId", method = RequestMethod.PUT)
+    @RequestMapping(value = "api/users/restaurant", params = "restaurantId", method = RequestMethod.PUT)
     public void removeRestaurant(@Param("restaurantId") Integer restaurantId) {
 
         userService.removeRestaurant(restaurantId);
     }
 
-    @RequestMapping(value = "/restaurant", method = RequestMethod.GET)
+    @RequestMapping(value = "api/restaurant", method = RequestMethod.GET)
     public List<Restaurant> findAllRestaurants() {
 
         return userService.findAllRestaurants();
     }
 
-    @RequestMapping(value = "/lunch", params = "name", method = RequestMethod.POST)
+    @RequestMapping(value = "api/users/lunch", params = "name", method = RequestMethod.POST)
     public void addLunch(@Param("lunchName") String name, @Param("restaurantId") Integer restaurantId) {
         userService.addLunch(name, restaurantId);
     }
 
-    @RequestMapping(value = "/restaurant/menu", params = "restaurantId", method = RequestMethod.GET)
+    @RequestMapping(value = "api/restaurant/menu", params = "restaurantId", method = RequestMethod.GET)
     public List<Lunch> getRestaurantMenu(@Param("restaurantId") Integer restaurantId) {
         return userService.getRestaurantMenu(restaurantId);
+    }
+
+    @RequestMapping(value = "api/restaurant/menu",method = RequestMethod.POST)
+    public void addVote(@Param("userId") Integer userId, @Param("restaurantId") Integer restaurantId) {
+
+        voteService.addVote(userId,restaurantId);
     }
 }

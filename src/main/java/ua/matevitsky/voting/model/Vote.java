@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "votes", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "vote_date"}, name = "unique_vote")})
-public class Vote extends BaseEntity{
+public class Vote extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
@@ -18,17 +18,17 @@ public class Vote extends BaseEntity{
     private User user;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "menu_id", nullable = false)
+    @JoinColumn(name = "restaurantId", nullable = false)
     @NotNull
-    private Menu menu;
+    private Restaurant restaurant;
 
     @NotNull
     @Column(name = "vote_date", nullable = false,columnDefinition = "Date")
      private LocalDate date;
 
-    public Vote(User user, Menu menu, LocalDate date) {
+    public Vote(User user, Restaurant restaurant, LocalDate date) {
         this.user = user;
-        this.menu = menu;
+        this.restaurant = restaurant;
         this.date = date;
     }
 
@@ -44,12 +44,12 @@ public class Vote extends BaseEntity{
         this.user = user;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public LocalDate getDate() {
@@ -64,7 +64,7 @@ public class Vote extends BaseEntity{
     public String toString() {
         return "Vote{" +
                 "user=" + user +
-                ", menu=" + menu +
+                ", restaurant=" + restaurant +
                 ", date=" + date +
                 '}';
     }
