@@ -10,10 +10,10 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "lunch", uniqueConstraints = {@UniqueConstraint(columnNames = {"menu_id"}, name = "unique_lunch")})
+@Table(name = "lunch")
 public class Lunch extends NamedEntity {
 
-    public Lunch(Integer id, String name) {
+    public Lunch( String name,Integer id) {
         super(id, name);
     }
 

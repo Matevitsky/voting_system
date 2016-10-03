@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 public class BaseEntity extends AbstractPersistable<Integer> implements Identifiable<Integer> {
 
-  //  public final static int START_SEQ = 100000;
+    public final static int START_SEQ = 100000;
 
     public BaseEntity() {
 

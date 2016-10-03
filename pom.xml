@@ -79,7 +79,7 @@
         </dependency>
 
 
-        <!--  &lt;!&ndash;h2database&ndash;&gt;
+          <!--h2database-->
 
           <dependency>
               <groupId>com.h2database</groupId>
@@ -92,13 +92,13 @@
               <groupId>org.hsqldb</groupId>
               <artifactId>hsqldb</artifactId>
               <scope>runtime</scope>
-          </dependency>-->
+          </dependency>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4-1206-jdbc42</version>
-        </dependency>
+        </dependency>-->
 
         <!--TEST-->
 
