@@ -81,11 +81,13 @@ public class User extends NamedEntity {
     }
 
 
-
     @Override
     public String toString() {
         return "User{" +
                 "password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + roles +
+                ", enabled=" + enabled +
                 '}';
     }
 
