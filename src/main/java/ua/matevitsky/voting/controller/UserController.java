@@ -74,12 +74,12 @@ public class UserController {
         userService.addLunch(name, restaurantId);
     }
 
-    @RequestMapping(value = "api/restaurant/menu", params = "restaurantId", method = RequestMethod.GET)
+    @RequestMapping(value = "api/restaurant", params = "restaurantId", method = RequestMethod.GET)
     public List<Lunch> getRestaurantMenu(@Param("restaurantId") Integer restaurantId) {
         return userService.getRestaurantMenu(restaurantId);
     }
 
-    @RequestMapping(value = "api/restaurant/menu",method = RequestMethod.POST)
+    @RequestMapping(value = "api/restaurant",method = RequestMethod.POST)
     public void addVote(@Param("userId") Integer userId, @Param("restaurantId") Integer restaurantId) {
 
         voteService.addVote(userId,restaurantId);

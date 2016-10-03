@@ -69,7 +69,7 @@ public class UserService {
     }
 
     public void addLunch(String name, Integer restaurantId) {
-        Restaurant restaurant = restaurantRepository.findById(restaurantId);
+        Restaurant restaurant = restaurantRepository.getOne(restaurantId);
         if (restaurant != null) {
             Lunch lunch = new Lunch();
             lunch.setName(name);
@@ -87,7 +87,7 @@ public class UserService {
     }
 
     public List <Lunch> getRestaurantMenu(Integer restaurantId) {
-        Restaurant restaurant = restaurantRepository.findById(restaurantId);
+        Restaurant restaurant = restaurantRepository.getOne(restaurantId);
         Menu menu = menuRepository.findByRestaurant(restaurant).get(0);
         return lunchRepository.findByMenu(menu);
     }

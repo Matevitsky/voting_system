@@ -18,12 +18,6 @@ import ua.matevitsky.voting.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer>{
 
-   /* @Transactional(readOnly = true)
-    @Query("SELECT u FROM User u WHERE u.id=:id")
-    @RequestMapping(method = RequestMethod.GET)
-     User findById(@Param("id") Integer id) ;*/
-
-
     @Transactional(readOnly = true)
     @Query("SELECT u FROM User u WHERE u.email=:email")
     @RequestMapping(method = RequestMethod.GET)
