@@ -28,7 +28,7 @@ public class Controller {
         return voteService.save(menu);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/vote",method = RequestMethod.GET)
     public ResponseEntity<Restaurant> getCurrentVote() {
         return voteService.getCurrentVote();
     }

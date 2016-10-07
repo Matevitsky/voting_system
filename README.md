@@ -35,7 +35,7 @@ For Voting:
 
 ## Install:
 
-    https://github.com/Matevitsky/voting_system/tree/H2_DataBase
+    https://github.com/Matevitsky/voting_system
 
 ## Run (from project directory)
 
