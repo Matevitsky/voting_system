@@ -8,8 +8,6 @@ import ua.matevitsky.voting.LoggedUser;
 import ua.matevitsky.voting.model.Menu;
 import ua.matevitsky.voting.model.Restaurant;
 import ua.matevitsky.voting.model.Vote;
-import ua.matevitsky.voting.repository.MenuRepository;
-import ua.matevitsky.voting.repository.RestaurantRepository;
 import ua.matevitsky.voting.repository.UserRepository;
 import ua.matevitsky.voting.repository.VoteRepository;
 
@@ -28,12 +26,6 @@ public class VoteService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private RestaurantRepository restaurantRepository;
-
-    @Autowired
-    private MenuRepository menuRepository;
 
 
     public ResponseEntity<Restaurant> save(Menu menu) {

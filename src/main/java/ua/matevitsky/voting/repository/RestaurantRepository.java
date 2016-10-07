@@ -21,7 +21,7 @@ public interface RestaurantRepository extends JpaRepository <Restaurant,Integer>
     @Transactional(readOnly = true)
     @Query("SELECT u FROM Restaurant u WHERE u.id=:id")
     @RequestMapping(method = RequestMethod.GET)
-    public Restaurant findById(@Param("id") Integer id) ;
+    Restaurant findById(@Param("id") Integer id) ;
 
     @Override
     @Secured("ROLE_ADMIN")
