@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +19,10 @@ import ua.matevitsky.voting.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer>{
 
+    @RestResource(path = "by-email")
     @Transactional(readOnly = true)
-    @Query("SELECT u FROM User u WHERE u.email=:email")
-    @RequestMapping(method = RequestMethod.GET)
+    @Query("SELECT u FROM User u " +
+            " LEFT JOIN u.roles WHERE u.email=:email")
     User findByEmail(@Param("email") String email) ;
 
 

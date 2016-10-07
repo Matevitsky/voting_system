@@ -2,8 +2,14 @@ package ua.matevitsky.voting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.matevitsky.voting.model.*;
-import ua.matevitsky.voting.repository.*;
+import ua.matevitsky.voting.model.Lunch;
+import ua.matevitsky.voting.model.Menu;
+import ua.matevitsky.voting.model.Restaurant;
+import ua.matevitsky.voting.model.User;
+import ua.matevitsky.voting.repository.LunchRepository;
+import ua.matevitsky.voting.repository.MenuRepository;
+import ua.matevitsky.voting.repository.RestaurantRepository;
+import ua.matevitsky.voting.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,45 +34,10 @@ public class UserService {
     private LunchRepository lunchRepository;
 
 
-    public List<User> findAllUsers() {
-        return userRepository.findAll();
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
-
-
-    public void addNewUser(String name,String email,String password,Boolean enabled) {
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setEnabled(enabled);
-        userRepository.save(user);
-    }
-
-    public User findById(Integer id) {
-        return userRepository.getOne(id);
-    }
-
-    public void removeUser(Integer id) {
-        userRepository.delete(id);
-
-    }
-
-    public void addRestaurant(String name) {
-        Restaurant restaurant = new Restaurant();
-        restaurant.setName(name);
-        restaurantRepository.save(restaurant);
-    }
-
-    public void removeRestaurant(Integer restaurantId) {
-
-        restaurantRepository.delete(restaurantId);
-    }
-
-    public List<Restaurant> findAllRestaurants() {
-
-        return restaurantRepository.findAll();
-    }
 
     public void addLunch(String name, Integer restaurantId) {
         Restaurant restaurant = restaurantRepository.getOne(restaurantId);

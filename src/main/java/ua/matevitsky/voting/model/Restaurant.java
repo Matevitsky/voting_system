@@ -14,10 +14,6 @@ public class Restaurant  extends NamedEntity{
 
 
 
-    public Restaurant(Integer id, String name) {
-        super(id, name);
-    }
-
     public Restaurant() {
     }
 

@@ -3,6 +3,8 @@ package ua.matevitsky.voting.model;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -15,6 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User extends NamedEntity {
+    private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
 
     @Column(name = "password", nullable = false)
     @NotEmpty
@@ -36,9 +39,25 @@ public class User extends NamedEntity {
     @Column(name = "enabled", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
     private   boolean enabled = true;
 
-    public void setRoles(Set<Role> roles) {
+    public User() {
+    }
+
+    public User(User u) {
+        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getRoles());
+    }
+
+    public User(Integer id, String name, String email, String password, Role role, Role... roles) {
+        this(id, name, email, password, true, EnumSet.of(role, roles));
+    }
+
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
+        super(id, name);
+        this.email = email;
+        this.password = password;
+        this.enabled = enabled;
         this.roles = roles;
     }
+
 
     public boolean isEnabled() {
         return enabled;
@@ -64,22 +83,6 @@ public class User extends NamedEntity {
         this.email = email;
     }
 
-    public User(User u) {
-        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getRoles());
-    }
-
-    public User(Integer id, String name, String email, String password, Role role, Role... roles) {
-        this(id, name, email, password, true, EnumSet.of(role, roles));
-    }
-
-    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
-        super(id, name);
-        this.email = email;
-        this.password = password;
-        this.enabled = enabled;
-        this.roles = roles;
-    }
-
 
     @Override
     public String toString() {
@@ -97,12 +100,6 @@ public class User extends NamedEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-
-
-    public User() {
-
     }
 
 

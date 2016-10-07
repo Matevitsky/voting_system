@@ -15,7 +15,7 @@ import ua.matevitsky.voting.repository.UserRepository;
  */
 
 @Service("CustomUserDetailsService")
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
