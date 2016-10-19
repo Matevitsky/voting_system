@@ -76,7 +76,7 @@ CURL:
      curl 'http://localhost:8080/api/users/?email=admin@gmail.com' -i -H'Authorization:Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
      curl 'http://localhost:8080/api/users' -i -d'{"name" : "NewUser", "email" : "new@mail.ru","password" : "123456","roles" : ["ROLE_USER"]}' -H'Authorization:Basic YWRtaW5AZ21haWwuY29tOmFkbWlu' -H'Content-Type: application/json'
 
-### Restorant handling
+### Restaurant handling
 
 - <a href="http://localhost:8080/api/restaurants">Restaurant list</a>
 - <a href="http://localhost:8080/api/restaurants/0">Restaurant 0</a>
