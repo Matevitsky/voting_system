@@ -39,6 +39,7 @@ public class VoteService {
         vote.setRestaurant(menu.getRestaurant());
         vote.setDate(today);
         LocalDateTime before11Time = LocalDateTime.of(LocalDate.now(), LocalTime.of(11, 00, 00, 00));
+        // LocalDateTime before11Time = LocalDateTime.of(2016,10,30,11, 00, 00, 00);
 
         if (LocalDateTime.now().isBefore(before11Time)) {
             if (voteRepository.getForUserAndDate(LoggedUser.id(), today) == null) {
@@ -66,5 +67,9 @@ public class VoteService {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+    }
+
+    public Iterable<Vote> getAllVotes() {
+        return voteRepository.findAll();
     }
 }

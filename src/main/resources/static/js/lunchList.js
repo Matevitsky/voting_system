@@ -1,55 +1,90 @@
-var lunchTable = $('#lunchTable').DataTable({
+var table;
+$(document).ready(function () {
+   table = $('#lunchTable').DataTable({
+        "ajax": {
+            "url": "ajax/lunches",
+            "dataSrc": ""
 
-    ajax: {
-
-        url: 'api/lunches',
-        dataSrc: '_embedded.lunches'
-    },
-    columns: [
-
-
-        {
-            data: '_links.lunch'
         },
-        {
-
-            data: '_links.menu'
-        },
-
-    ]
+        "columns": [
+            {
+                "data": "restaurantName",
+                "title": "Restaurant Name"
+            },
+            {
+                "data": "lunchName",
+                "title": "Lunch Name"
+            },
+            {
+                "title": "Vote",
+               // "orderable": false,
+                "defaultContent": "",
+                "render": renderDeleteBtn
+            }],
+    });
 });
-/*
-$('#lunchTable').DataTable({
-    "ajax": {
-        "url": "api/lunches",
-        "dataSrc": function (json) {
-            var return_data = new JSON();
-            for (var i = 0; i < json[0].length; i++) {
-                return_data.push({
-                    'name': json['_embedded.lunches'][i].name,
-                    'menu': json['_embedded.lunches'][i].menu,
-                    'lunch': json['_embedded.lunches'][i].lunch
 
-                })
-                console.log(json[i]);
-            }
-            return return_data;
+
+function renderDeleteBtn(data, type, row) {
+    if (type == 'display') {
+
+        return '<a class="btn btn-xs btn-danger" onclick="deleteRow(this);">Vote</a>';
+    }
+    //deleteRow(' + row.id + ')
+}
+
+function deleteRow(row) {
+    var _tr =$(row).closest('tr');
+    var restaurantName = $(_tr).find('td:eq(0)').text();
+    var lunchName = $(_tr).find('td:eq(1)').text();
+    $.ajax({
+        url: '/ajax/lunches',
+
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            restaurantName:restaurantName,
+            lunchName:lunchName
+    }),
+
+        success: function () {
+
+            successNoty('Voted');
         }
-    }, columns: [
+    });
+}
+function enable(checkbox, id) {
+    debugger
 
+    var enabled = checkbox.is(":checked");
+    checkbox.closest('tr').css("text-decoration", enabled ? "none" : "line-through");
+    $(this).closest('tr').find('input[type="checkbox"]').each(function(i, checkbox){
+        console.log($(checkbox).val());
+    });
+   /* $.ajax({
+        url: "ajax/lunches/vote" + row.get("LunchName"),
+        type: 'POST',
+        data: 'enabled=' + enabled,
+        success: function () {
+            successNoty(enabled ? 'Enabled' : 'Disabled');
+        }
+    });*/
+}
+function successNoty(text) {
+    closeNoty();
+    noty({
+        text: text,
+        type: 'success',
+        layout: 'bottomRight',
+        timeout: true
+    });
+}
 
-        {
-            data: '_links.lunch'
-        },
-        {
+var failedNote;
 
-            data: '_links.menu'
-        },
-
-    ]
-});*/
-
-$.getJSON("api/lunches", function (json) {
-    console.log(json);
-
-});
+function closeNoty() {
+    if (failedNote) {
+        failedNote.close();
+        failedNote = undefined;
+    }
+}

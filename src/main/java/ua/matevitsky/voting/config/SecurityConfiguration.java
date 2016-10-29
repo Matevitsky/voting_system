@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ua.matevitsky.voting.model.Role;
 import ua.matevitsky.voting.service.CustomUserDetailsService;
 
 /**
@@ -44,7 +45,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
-               // .antMatchers("/api/users").hasAuthority(Role.ROLE_ADMIN.getAuthority())
+                .antMatchers("/api/users**").hasAuthority(Role.ROLE_ADMIN.getAuthority())
+                .antMatchers("/api/vote**").authenticated()
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -53,7 +56,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll();
+                .permitAll()
+                .and().httpBasic()
+               // .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().csrf().disable();
 
     }
 

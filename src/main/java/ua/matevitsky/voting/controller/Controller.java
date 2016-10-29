@@ -22,7 +22,6 @@ public class Controller {
     @Autowired
     private VoteService voteService;
 
-
     @RequestMapping(value = "vote/{menuId}", method = RequestMethod.POST)
     public ResponseEntity<Restaurant> addVote(@PathVariable("menuId") Menu menu) {
         return voteService.save(menu);
