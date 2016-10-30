@@ -44,7 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/", "/login").permitAll()
                 .antMatchers("/api/users**").hasAuthority(Role.ROLE_ADMIN.getAuthority())
                 .antMatchers("/api/vote**").authenticated()
 
@@ -55,8 +55,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .successForwardUrl("/lunchList")
                 .permitAll()
                 .and()
-                .logout()
+                .logout().logoutSuccessUrl("/")
                 .permitAll()
+
                 .and().httpBasic()
                // .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().csrf().disable();

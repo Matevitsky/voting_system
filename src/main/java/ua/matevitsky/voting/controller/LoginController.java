@@ -17,6 +17,8 @@ public class LoginController {
         return "login";
     }
 
+
+
     @RequestMapping("/users")
     String getUsers(){
         return "usersList";
@@ -26,5 +28,7 @@ public class LoginController {
     String getLunchList(){
         return "lunchList";
     }
+
+
 
 }

@@ -53,23 +53,7 @@ function deleteRow(row) {
         }
     });
 }
-function enable(checkbox, id) {
-    debugger
 
-    var enabled = checkbox.is(":checked");
-    checkbox.closest('tr').css("text-decoration", enabled ? "none" : "line-through");
-    $(this).closest('tr').find('input[type="checkbox"]').each(function(i, checkbox){
-        console.log($(checkbox).val());
-    });
-   /* $.ajax({
-        url: "ajax/lunches/vote" + row.get("LunchName"),
-        type: 'POST',
-        data: 'enabled=' + enabled,
-        success: function () {
-            successNoty(enabled ? 'Enabled' : 'Disabled');
-        }
-    });*/
-}
 function successNoty(text) {
     closeNoty();
     noty({
@@ -88,3 +72,27 @@ function closeNoty() {
         failedNote = undefined;
     }
 }
+
+
+
+
+
+
+
+/*function enable(checkbox, id) {
+ debugger
+
+ var enabled = checkbox.is(":checked");
+ checkbox.closest('tr').css("text-decoration", enabled ? "none" : "line-through");
+ $(this).closest('tr').find('input[type="checkbox"]').each(function(i, checkbox){
+ console.log($(checkbox).val());
+ });
+ /!* $.ajax({
+ url: "ajax/lunches/vote" + row.get("LunchName"),
+ type: 'POST',
+ data: 'enabled=' + enabled,
+ success: function () {
+ successNoty(enabled ? 'Enabled' : 'Disabled');
+ }
+ });*!/
+ }*/
