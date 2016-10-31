@@ -17,16 +17,19 @@ public class LoginController {
         return "login";
     }
 
-
+    @RequestMapping("/login")
+    String loginPage(){
+        return "login";
+    }
 
     @RequestMapping("/users")
     String getUsers(){
         return "usersList";
     }
 
-    @RequestMapping("/lunchList")
+    @RequestMapping("/userTemplate")
     String getLunchList(){
-        return "lunchList";
+        return "userTemplate";
     }
 
 

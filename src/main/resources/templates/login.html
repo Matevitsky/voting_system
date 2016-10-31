@@ -2,11 +2,13 @@
 <head>
     <link rel="stylesheet" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <link rel="stylesheet" href="../css/signin.css" th:href="@{/css/signin.css}" />
+    <link rel="stylesheet" href="../css/cover.css" th:href="@{/css/cover.css}" />
+
 </head>
 <body>
 <div class="container">
     <form class="form-signin" th:action="@{/login}" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">Welcome,please login</h2>
         <input type="text" class="form-control" placeholder="Email address" id="j_username" name="username" />
         <input type="password" class="form-control" placeholder="Password" id="j_password" name="password"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
