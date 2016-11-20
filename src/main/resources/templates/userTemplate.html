@@ -1,79 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+ 
 
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+<head>
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <link rel="stylesheet" href="webjars/datatables/1.10.12/css/jquery.dataTables.min.css"/>
 
-    <!-- Bootstrap Core CSS -->
-    <!--   <link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
 
-    <!-- Custom CSS -->
-    <!-- <link href="css/sb-admin.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="../css/sb-admin.css" th:href="@{/css/sb-admin.css}"/>
+    <!-- Optional theme -->
 
-    <!-- Morris Charts CSS -->
-    <!-- <link href="css/plugins/morris.css" rel="stylesheet">-->
-    <link href=".../css/plugins/morris.css" rel="stylesheet" th:href="@{/css/plugins/morris.css}"/>
-
-    <!-- Custom Fonts -->
-    <!--  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
-    <link rel="stylesheet" href="../fonts/font-awesome.min.css" th:href="@{/fonts/font-awesome.min.css}"/>
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css" th:href="@{/css/bootstrap.min.css}"/>
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+
 
 </head>
 
 <body>
-<div class="collapse navbar-collapse navbare-ex1-collapse">
-    <ul class="nav navbar-nav side-nav">
-        <li class="active">
-            <a href="userTemplate.html"><i class="fa fa-fw fa-file"></i> History</a>
-        </li>
+
+<div th:include="footer :: copy"></div>
+
+<div class="jumbotron">
 
 
-    </ul>
-</div>
-<div id="wrapper">
-    <div th:include="footer :: copy"></div>
-    <div id="page-wrapper">
+    <div class="container">
+        <div class="shadow">
+            <table class="table table-striped display" id="lunchTable">
+                <!-- <thead>
+                <tr>
+                     <th>Restaurant Name</th>
+                     <th>Lunch Name</th>
+                     <th>Vote</th>
 
-        <div class="jumbotron">
+                     <th></th>
+                     <th></th>
+                 </tr>
+                 </thead>-->
 
-
-            <div class="table-responsive">
-                <div class="shadow">
-                    <table class="table table-bordered table-hover table-striped" id="lunchTable">
-                        <!-- <thead>
-                        <tr>
-                             <th>Restaurant Name</th>
-                             <th>Lunch Name</th>
-                             <th>Vote</th>
-
-                             <th></th>
-                             <th></th>
-                         </tr>
-                         </thead>-->
-
-                    </table>
-                </div>
-            </div>
+            </table>
         </div>
     </div>
 </div>
-<script th:src="@{/js/jquery.js}"></script>
+
+
+
+</body>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -88,5 +62,4 @@
 <script src="/js/bootstrap.min.js"></script>
 
 <script th:src="@{/js/lunchList.js}"/>
-</body>
 </html>

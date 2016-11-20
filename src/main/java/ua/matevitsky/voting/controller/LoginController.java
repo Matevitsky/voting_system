@@ -17,9 +17,9 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping("/lunchList")
+    @RequestMapping("/userTemplate")
     String loginPage(){
-        return "lunchList";
+        return "userTemplate";
     }
 
     @RequestMapping("/users")
