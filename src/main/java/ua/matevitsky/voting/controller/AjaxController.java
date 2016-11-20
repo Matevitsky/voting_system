@@ -67,4 +67,6 @@ public class AjaxController {
     public Iterable<Vote> getAllVotes() {
         return voteService.getAllVotes();
     }
+
+
 }

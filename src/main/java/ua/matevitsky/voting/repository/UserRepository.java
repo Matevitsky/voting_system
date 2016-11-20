@@ -1,5 +1,6 @@
 package ua.matevitsky.voting.repository;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -14,13 +15,14 @@ import ua.matevitsky.voting.model.User;
 
 
 @Repository
-public interface UserRepository extends CrudRepository<User,Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 
     @RestResource(path = "by-email")
     @Transactional(readOnly = true)
     @Query("SELECT u FROM User u " +
             " LEFT JOIN u.roles WHERE u.email=:email")
-    User findByEmail(@Param("email") String email) ;
+    User findByEmail(@Param("email") String email);
 
-
+   /* @Override
+    User save(User user);*/
 }

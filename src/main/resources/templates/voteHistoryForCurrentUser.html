@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+
+<head>
+
+    <link rel="stylesheet" href="webjars/datatables/1.10.12/css/jquery.dataTables.min.css"/>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+
+    <!-- Optional theme -->
+
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css" th:href="@{/css/bootstrap.min.css}"/>
+
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+
+
+</head>
+
+<body>
+
+<div th:include="footer :: copy"></div>
+
+<div class="jumbotron">
+
+
+    <div class="container">
+        <div class="shadow">
+            <table class="table table-striped display" id="historyTable">
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript" src="webjars/noty/2.3.8/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script th:src="@{/js/voteHistory.js}"/>
+
+
+</html>
