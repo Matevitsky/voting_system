@@ -31,7 +31,4 @@ public class LoginController {
     String getLunchList(){
         return "voteHistoryForCurrentUser";
     }
-
-
-
 }
